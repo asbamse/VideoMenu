@@ -73,5 +73,25 @@ namespace VideoMenu
             }
             return false;
         }
+
+        /**
+         * <summary>
+         * Search for video with name containing keyword.
+         * </summary>
+         **/
+        public List<Video> searchVideo(string keyword)
+        {
+            List<Video> videos = getVideos();
+            List<Video> foundVideos = new List<Video>();
+            for (int i = 0; i < videos.Count; i++)
+            {
+                if (videos[i].Name.Contains(keyword))
+                {
+                    foundVideos.Add(videos[i]);
+                }
+            }
+
+            return foundVideos;
+        }
     }
 }

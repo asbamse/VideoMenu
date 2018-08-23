@@ -69,6 +69,24 @@ namespace VideoMenu
                                 Console.WriteLine("Video not found nor deleted.");
                             }
                         }),
+                    new MenuItem("Search", () =>
+                        {
+                            Console.Write("Input search: ");
+                            
+                            List<Video> videos = vmod.searchVideo(Console.ReadLine());
+
+                            if(videos.Count > 0)
+                            {
+                                foreach (Video video in videos)
+                                {
+                                    Console.WriteLine("ID: {0}, Name: {1}", video.Id, video.Name);
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("There are no videos found.");
+                            }
+                        }),
                     new MenuItem("Clear", () =>
                         {
                             Console.Clear();
