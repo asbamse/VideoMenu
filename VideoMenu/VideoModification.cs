@@ -19,9 +19,9 @@ namespace VideoMenu
          * Adds video to data.
          * </summary>
          **/
-        public bool addVideo(String name)
+        public bool addVideo(String name, Genre genre)
         {
-            vdao.addVideo(new Video(nextId, name));
+            vdao.addVideo(new Video(nextId, name, genre));
             nextId++;
             return true;
         }
@@ -41,14 +41,14 @@ namespace VideoMenu
          * Updates a video already existing in the data.
          * </summary>
          **/
-        public bool updateVideo(int id, string name)
+        public bool updateVideo(int id, string name, Genre genre)
         {
             List<Video> videos = getVideos();
             for (int i = 0; i < videos.Count; i++)
             {
                 if (videos[i].Id == id)
                 {
-                    vdao.updateVideo(i, new Video(id, name));
+                    vdao.updateVideo(i, new Video(id, name, genre));
                     return true;
                 }
             }

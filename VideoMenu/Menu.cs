@@ -11,15 +11,22 @@ namespace VideoMenu
      **/
     class Menu
     {
-        private ConsoleUtils cu = new ConsoleUtils();
+        private string name;
         private MenuItem[] menuItems;
+        private bool isExit;
+
+        public Menu(string name)
+        {
+            this.name = name;
+            this.isExit = false;
+        }
 
         /**
          * <summary>
          * Adds menu items to menu.
          * </summary>
          **/
-        public void setMenu(MenuItem[] menuItems)
+        public void SetMenu(MenuItem[] menuItems)
         {
             this.menuItems = menuItems;
         }
@@ -31,13 +38,13 @@ namespace VideoMenu
          **/
         public void Show()
         {
-            Console.WriteLine("Menu:");
+            Console.WriteLine("{0}:", name);
             for (int i = 0; i < menuItems.Length; i++)
             {
                 Console.WriteLine("{0}: {1}", i+1, menuItems[i].Message);
             }
 
-            while (true)
+            while (!isExit)
             {
                 ReadChosenItem();
             }
@@ -56,8 +63,7 @@ namespace VideoMenu
                 int chosenOne;
                 while (true)
                 {
-                    Console.Write("Choose a menu item: ");
-                    chosenOne = cu.ReadInt() - 1;
+                    chosenOne = ConsoleUtils.ReadInt("Choose a menu item: ") - 1;
                     if (chosenOne < menuItems.Length && chosenOne >= 0)
                     {
                         break;
@@ -71,6 +77,16 @@ namespace VideoMenu
             {
                 Console.WriteLine("The menu is empty!");
             }
+        }
+
+        /**
+         * <summary>
+         * Exit menu.
+         * </summary>
+         **/
+        public void Exit()
+        {
+            isExit = true;
         }
     }
 }

@@ -9,14 +9,45 @@ namespace VideoMenu
      * Handles console parsing.
      * </summary>
      **/
-    class ConsoleUtils
+    static class ConsoleUtils
     {
+        /**
+         * Read a string which is not empty from console ReadLine();
+         * Returns given string.
+         **/
+        public static string ReadNotEmpty()
+        {
+            return ReadNotEmpty("");
+        }
+
+        public static string ReadNotEmpty(string message)
+        {
+            Console.Write(message);
+
+            string str = Console.ReadLine();
+            if(str.Length > 0)
+            {
+                return str;
+            }
+            else
+            {
+                Console.WriteLine("It cannot be empty!");
+                return ReadNotEmpty(message);
+            }
+        }
+
         /**
          * Read an integer from console ReadLine();
          * Returns given integer.
          **/
-        public int ReadInt()
+        public static int ReadInt()
         {
+            return ReadInt("");
+        }
+        public static int ReadInt(string message)
+        {
+            Console.Write(message);
+
             int j;
             if (Int32.TryParse(Console.ReadLine(), out j))
             {
@@ -25,7 +56,7 @@ namespace VideoMenu
             else
             {
                 Console.WriteLine("It can be an integer only!");
-                return ReadInt();
+                return ReadInt(message);
             }
         }
 
@@ -33,8 +64,14 @@ namespace VideoMenu
          * Read an float from console ReadLine();
          * Returns given float.
          **/
-        public float ReadFloat()
+        public static float ReadFloat()
         {
+            return ReadFloat("");
+        }
+        public static float ReadFloat(string message)
+        {
+            Console.Write(message);
+
             float j;
             if (float.TryParse(Console.ReadLine(), out j))
             {
@@ -43,7 +80,7 @@ namespace VideoMenu
             else
             {
                 Console.WriteLine("It can be an float only!");
-                return ReadFloat();
+                return ReadFloat(message);
             }
         }
     }

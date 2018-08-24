@@ -6,25 +6,23 @@ namespace VideoMenu
 {
     /**
      * <summary>
-     * Business Entity descriping a Video.
+     * Business Entity descriping a Genre.
      * </summary>
      **/
-    class Video
+    class Genre
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Genre Genre { get; set; }
 
         /**
          * <summary>
          * Force information on creation.
          * </summary>
          **/
-        public Video(int id, string name, Genre genre)
+        public Genre(int id, string name)
         {
             Id = id;
             Name = name;
-            Genre = genre;
         }
     }
 }
